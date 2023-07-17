@@ -102,17 +102,6 @@ import openai
 # load_dotnev will parse the .env file and set the variables in environment automatically.
 load_dotenv()
 
-# set the env variables for openai
-#openai.api_key = os.getenv("AZURE_API_KEY")
-#openai.api_version = os.getenv("OPENAI_API_VERSION")
-#openai.api_base = os.getenv("OPENAI_API_BASE")
-#openai.api_type = "azure"
-
-
-os.environ["OPENAI_API_TYPE"] = "azure"
-os.environ["OPENAI_API_BASE"] = os.getenv("OPENAI_API_BASE")
-os.environ["OPENAI_API_KEY"] = os.getenv("AZURE_API_KEY")
-
 
 llm = AzureOpenAI(deployment_name=os.getenv("CHATGPT_MODEL"))
 route_chain = LLMRouterChain.from_llm(llm=llm, prompt=router_prompt, verbose=True)
